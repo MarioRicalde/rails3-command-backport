@@ -1,0 +1,42 @@
+# Rails Bash Commands Integration.
+# by Mario "Kuroir" Ricalde
+# alias r=rail $*;
+function rail() {
+  local version=rails_major_version;
+  current=$1;
+  extra=$(echo $* | sed -e 's/^[a-z]//g');
+  case $1 in
+    server|s)
+    if [[ version -ge 3 ]]; then
+      rails s $extra
+    else
+      script/server $extra
+    fi;;
+    
+    generate|g)
+    if [[ version -ge 3 ]]; then
+      rails g $extra
+    else
+      script/generate $extra
+    fi;;
+    
+    console|c)
+    if [[ version -ge 3 ]]; then
+      rails c $extra
+    else
+      script/console $extra
+    fi;;
+    
+    dbconsole|db)
+    if [[ version -ge 3 ]]; then
+      rails db $extra
+    else
+      script/dbconsole $extra
+    fi;;
+    
+    kuroir)
+    echo "KUROIR.COM";;
+    *)
+      rails $*;;
+  esac
+}
