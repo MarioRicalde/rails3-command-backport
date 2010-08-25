@@ -4,6 +4,8 @@ Put the contents of 'bashscript' in your bash profile (~/.profile).
 
 # Examples
 
+[View the screncast here!](http://screenr.com/ZTr)
+
     rail Proyect
     rail g controller hello
     rail generate controller hello
