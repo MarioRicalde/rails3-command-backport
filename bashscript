@@ -1,6 +1,6 @@
 # Rails Bash Commands Integration.
 # by Mario "Kuroir" Ricalde
-# alias r=rail $*;
+alias r=rail $*;
 function rail() {
   local version=rails_major_version;
   current=$1;
@@ -39,4 +39,9 @@ function rail() {
     *)
       rails $*;;
   esac
+}
+
+# Rails
+function rails_major_version {
+  rails -v | sed -e 's/Rails //g' -e 's/.[0-9].[0-9]$//g';
 }
